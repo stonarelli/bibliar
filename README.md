@@ -30,3 +30,9 @@ The View / Controller model is  separated through an API system. The api.php fil
 La vista es facilmente modificable. Usted puede usar el diseño o embeber el código en cualquier parte de su sitio.
 
 The view is easily to Reskyn. You can use the design you want or embed the code anywhere in your site.
+
+## Join Us ##
+
+Si usted desea involucrarse en proyectos relacionados con la Biblia, contacteme.
+
+If you want be envoilved in Bible projects, please contact me
