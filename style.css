@@ -1,0 +1,18 @@
+html, body{
+	background-color: #EAEAEA;
+}
+html, input, select, textarea, p, div{
+	font-family: "Trebuchet MS", sans-serif;
+	font-size: 12px;	
+}
+
+.container{
+    min-width: 500px;
+    max-width: 500px;
+    min-height: 300px;
+    margin: auto;
+    padding: 20px;
+    overflow: hidden;
+    display: block;
+    box-shadow: #949494 9px 8px 20px 0px;
+}
