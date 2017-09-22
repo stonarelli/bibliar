@@ -18,7 +18,7 @@ class APIBibliar {
 
     $return = array();
 
-    $sql = "SELECT * FROM `bible_version` ORDER BY language ASC;";
+    $sql = "SELECT * FROM `bible_version` WHERE published = 1 ORDER BY language ASC;";
 
     $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
 
@@ -32,7 +32,7 @@ class APIBibliar {
 
     $return = array();
 
-    $sql = "SELECT id, name, genre FROM `bible_".strtolower( $this->version )."_books` WHERE 1;";
+    $sql = "SELECT id, name FROM `bible_".strtolower( $this->version )."_books` WHERE 1;";
 
     $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
 
@@ -45,6 +45,8 @@ class APIBibliar {
     global $db;
 
     $return = array();
+
+    if( $this->version == 'TIS' && $this->book < 40 ) $this->book = 40;
 
     $sql = "SELECT DISTINCT chapter FROM `bible_".strtolower( $this->version )."` WHERE book = '".$this->book."';";
 
@@ -60,6 +62,11 @@ class APIBibliar {
 
     $return = array();
 
+    if( $this->version == 'TIS' && $this->book < 40 ){ 
+      $this->book = 40;
+      $this->chapter = 1;
+    }
+
     $sql = "SELECT verse FROM `bible_".strtolower( $this->version )."` WHERE book = '".$this->book."' AND chapter = '".$this->chapter."';";
 
     $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
@@ -73,6 +80,11 @@ class APIBibliar {
     global $db;
 
     $return = array();
+
+    if( $this->version == 'TIS' && $this->book < 40 ){ 
+      $this->book = 40;
+      $this->chapter = 1;
+    }
 
     $sql = "SELECT * FROM `bible_".strtolower( $this->version )."` WHERE book = '".$this->book."' "
     ." AND chapter = '".$this->chapter."' "

@@ -1,2 +1,13 @@
-# bibliar
-Bible Search Engine
+## Bibliar - Search In The Bible
+Search in the Bibkle easily 
+
+Note: This project is a prototype at the moment. 
+
+__Technology__
+* Backend
+	* PHP 5
+	* MySQL
+* Frontend
+	* JQuery
+	* HTML & CSS
+
