@@ -1,5 +1,5 @@
 ## Bibliar - Search In The Bible
-Search in the Bibkle easily 
+Search in the Bible fun and easily.
 
 Note: This project is a prototype at the moment. 
 
