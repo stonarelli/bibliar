@@ -17,3 +17,16 @@ html, input, select, textarea, p, div{
     display: block;
     box-shadow: #949494 9px 8px 20px 0px;
 }
+.container table{
+    padding: 5px;
+}
+.container select{
+    width: 98%;
+}
+.container b{
+    color: red;
+}
+#bibliar_s{
+    width: 98%;
+}
+

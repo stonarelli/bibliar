@@ -2,13 +2,8 @@
 class APIBibliar {
 
   var $version = '';
-
   var $book = '';
-  var $books = array();
-
   var $chapter = '';
-  var $chapters = array();
-
   var $verse = '';
 
   var $query = '';
@@ -46,7 +41,7 @@ class APIBibliar {
 
     $return = array();
 
-    if( $this->version == 'TIS' && $this->book < 40 ) $this->book = 40;
+    if( $this->version == 'TIS' && $this->book < 40 ) $this->book = 40; // Greek version only have New Testament
 
     $sql = "SELECT DISTINCT chapter FROM `bible_".strtolower( $this->version )."` WHERE book = '".$this->book."';";
 
@@ -62,7 +57,7 @@ class APIBibliar {
 
     $return = array();
 
-    if( $this->version == 'TIS' && $this->book < 40 ){ 
+    if( $this->version == 'TIS' && $this->book < 40 ){ // Greek version only have New Testament
       $this->book = 40;
       $this->chapter = 1;
     }
@@ -81,14 +76,18 @@ class APIBibliar {
 
     $return = array();
 
-    if( $this->version == 'TIS' && $this->book < 40 ){ 
+    if( in_array( $this->book, array( 'null', '', 'undefined' ) ) ) $this->book = '';
+    if( in_array( $this->chapter, array( 'null', '', 'undefined' ) ) ) $this->chapter = '';
+    if( in_array( $this->verse, array( 'null', '', 'undefined' ) ) ) $this->verse = '';
+
+    if( $this->version == 'TIS' && $this->book < 40 ){ // Greek version only have New Testament
       $this->book = 40;
       $this->chapter = 1;
     }
 
     $sql = "SELECT * FROM `bible_".strtolower( $this->version )."` WHERE book = '".$this->book."' "
     ." AND chapter = '".$this->chapter."' "
-    .( ( $this->verse != '' )? " AND verse = '".$this->verse."' " : '' )
+    .( ( !empty( $this->verse ) )? " AND verse = '".$this->verse."' " : '' )
     .";";
 
     $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
@@ -99,15 +98,26 @@ class APIBibliar {
   }
 
   function getSearch(){
+    global $db;
 
   	$return = array();
 
-  	$db = $this->dbConnect();
+    if( !empty( $this->query ) ){
 
-    $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
+      if( in_array( $this->book, array( 'null', '', 'undefined' ) ) ) $this->book = '';
+      if( in_array( $this->chapter, array( 'null', '', 'undefined' ) ) ) $this->chapter = '';
 
-		while( $row = mysql_fetch_array( $result, MYSQL_ASSOC ) ) $return[$row['id']] = $row;
+      $sql = "SELECT t.verse, t.chapter, t.book, t.text, b.name as bookname FROM `bible_".strtolower( $this->version )."` as t "
+      ." JOIN `bible_".strtolower( $this->version )."_books` as b ON( b.id = t.book ) "
+      ." WHERE t.text LIKE '% ".$this->query." %' "
+      .( ( !empty( $this->book ) )? " AND t.book = '".$this->book."' " : '' )
+      .( ( !empty( $this->chapter ) )? " AND t.chapter = '".$this->chapter."' " : '' )
+      .";";
 
+      $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
+  
+      while( $row = mysql_fetch_array( $result, MYSQL_ASSOC ) ) $return[$row['book'].'-'.$row['chapter'].'-'.$row['verse']] = $row;
+    }
 		return json_encode( $return );
   }
 

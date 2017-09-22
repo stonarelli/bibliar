@@ -1,9 +1,11 @@
 ## Bibliar - Search In The Bible
-Buscar en la Biblia de forma divertida y fácil. // Search the Bible in a fun and easy way.
+Buscar en la Biblia de forma divertida y fácil. 
+Search the Bible in a fun and easy way.
 
 Note: This project is a prototype at the moment. 
 
-__Technology / Tecnologia __
+## Technology ##
+
 * Backend
 	* PHP 5
 	* MySQL
