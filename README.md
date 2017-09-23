@@ -1,5 +1,7 @@
-## Bibliar - Search In The Bible
+## Bibliar
+
 Buscar en la Biblia de forma divertida y fácil. 
+
 Search the Bible in a fun and easy way.
 
 Note: This project is a prototype at the moment. 
@@ -15,15 +17,15 @@ Note: This project is a prototype at the moment.
 
 ## DataBase ##
 
-En la carpeta SQL estan los archivos para cargar la Base de Datos. Luego modifique la configuración en api.php
+En la carpeta SQL estan los archivos para cargar en la Base de Datos. Luego modifique la configuración en api.php para conectarse a la DataBase.
 
-In the SQL folder are the files to load the Database. Then modify the settings in api.php
+In the SQL folder are the files to load the Database. Then modify the settings in api.php to connect with the DataBase.
 
 ## API ##
 
 El modelo Vista / Controlador esta totalmente separado a traves de un sistema de API. El archivo api.php sirve los datos en formato jSON.
 
-The View / Controller model is  separated through an API system. The api.php file provide the data in jSON format.
+The View / Controller model is  separated through an API system. The api.php file provide the data in JSON format.
 
 ## View ##
 
@@ -33,6 +35,8 @@ The view is easily to Reskyn. You can use the design you want or embed the code 
 
 ## Join Us ##
 
-Si usted desea involucrarse en proyectos relacionados con la Biblia, contacteme.
+Si usted desea involucrarse en proyectos relacionados con la Biblia, por favor contacteme.
 
-If you want be envoilved in Bible projects, please contact me
+If you want to be involved in projects related to the Bible, please contact me.
+
+Gracias!
