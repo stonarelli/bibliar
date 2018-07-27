@@ -15,9 +15,9 @@ class APIBibliar {
 
     $sql = "SELECT * FROM `bible_version` WHERE published = 1 ORDER BY language ASC;";
 
-    $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
+    $result = mysqli_query($db, $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
 
-    while( $row = mysql_fetch_array( $result, MYSQL_ASSOC ) ) $return[$row['id']] = $row;
+    while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) ) $return[$row['id']] = $row;
 
     return json_encode( $return );
   }
@@ -29,9 +29,9 @@ class APIBibliar {
 
     $sql = "SELECT id, name FROM `bible_".strtolower( $this->version )."_books` WHERE 1;";
 
-    $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
+    $result = mysqli_query($db, $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
 
-    while( $row = mysql_fetch_array( $result, MYSQL_ASSOC ) ) $return[$row['id']] = $row;
+    while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) ) $return[$row['id']] = $row;
 
     return json_encode( $return );
   }
@@ -45,9 +45,9 @@ class APIBibliar {
 
     $sql = "SELECT DISTINCT chapter FROM `bible_".strtolower( $this->version )."` WHERE book = '".$this->book."';";
 
-    $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
+    $result = mysqli_query($db, $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
 
-    while( $row = mysql_fetch_array( $result, MYSQL_ASSOC ) ) $return[] = $row;
+    while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) ) $return[] = $row;
 
     return json_encode( $return );
   }
@@ -64,9 +64,9 @@ class APIBibliar {
 
     $sql = "SELECT verse FROM `bible_".strtolower( $this->version )."` WHERE book = '".$this->book."' AND chapter = '".$this->chapter."';";
 
-    $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
+    $result = mysqli_query($db, $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
 
-    while( $row = mysql_fetch_array( $result, MYSQL_ASSOC ) ) $return[] = $row;
+    while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) ) $return[] = $row;
 
     return json_encode( $return );
   }
@@ -90,9 +90,9 @@ class APIBibliar {
     .( ( !empty( $this->verse ) )? " AND verse = '".$this->verse."' " : '' )
     .";";
 
-    $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
+    $result = mysqli_query($db, $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
 
-    while( $row = mysql_fetch_array( $result, MYSQL_ASSOC ) ) $return[$row['book'].'-'.$row['chapter'].'-'.$row['verse']] = $row;
+    while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) ) $return[$row['book'].'-'.$row['chapter'].'-'.$row['verse']] = $row;
 
     return json_encode( $return );
   }
@@ -114,9 +114,9 @@ class APIBibliar {
       .( ( !empty( $this->chapter ) )? " AND t.chapter = '".$this->chapter."' " : '' )
       .";";
 
-      $result = mysql_query( $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
+      $result = mysqli_query($db, $sql ) or die( json_encode( array( 'error' => 'Error: ' . mysql_error() ) ) );
   
-      while( $row = mysql_fetch_array( $result, MYSQL_ASSOC ) ) $return[$row['book'].'-'.$row['chapter'].'-'.$row['verse']] = $row;
+      while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) ) $return[$row['book'].'-'.$row['chapter'].'-'.$row['verse']] = $row;
     }
 		return json_encode( $return );
   }
