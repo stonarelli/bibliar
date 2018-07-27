@@ -14,20 +14,20 @@ ini_set( "display_errors", 1 );
 	VARIABLES
 -----------------------------------------------------------------------------*/
 $_CONF = array(
-	'DATABASE_HOST' => 'localhost',
-	'DATABASE_USER' => 'root',
-	'DATABASE_PASS' => '',
-	'DATABASE_NAME' => 'bibliar',
+	'DATABASE_HOST' => '129.150.83.79',
+	'DATABASE_USER' => 'bible',
+	'DATABASE_PASS' => 'rkHX9ENBZfcjhtm99v9wVjz2E',
+	'DATABASE_NAME' => 'biblear',
 );
 
-$db = mysql_connect( $_CONF['DATABASE_HOST'], $_CONF['DATABASE_USER'], $_CONF['DATABASE_PASS'] ) or die(mysql_error());
+$db = mysqli_connect( $_CONF['DATABASE_HOST'], $_CONF['DATABASE_USER'], $_CONF['DATABASE_PASS'], $_CONF['DATABASE_NAME'] ) or die(mysql_error());
 
-mysql_select_db( $_CONF['DATABASE_NAME'] ) or die(mysql_error());
+//mysql_select_db( $_CONF['DATABASE_NAME'] ) or die(mysql_error());
 
-mysql_query("SET NAMES 'utf8'");
-mysql_query("set character_set_client='utf8'");
-mysql_query("set character_set_results='utf8'");
-mysql_query("set collation_connection='utf8'");
+mysqli_query($db,"SET NAMES 'utf8'");
+mysqli_query($db,"set character_set_client='utf8'");
+mysqli_query($db,"set character_set_results='utf8'");
+mysqli_query($db,"set collation_connection='utf8'");
 
 global $db;
 /*-----------------------------------------------------------------------------
