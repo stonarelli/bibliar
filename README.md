@@ -21,6 +21,38 @@ En la carpeta SQL estan los archivos para cargar en la Base de Datos. Luego modi
 
 In the SQL folder are the files to load the Database. Then modify the settings in api.php to connect with the DataBase.
 
+| Abbreviation | Language | version |
+| ------------ | ------------ | ------------ |
+|  ENG |  English |   |
+|  ASV |  English |  American Standard-ASV1901 |  
+|  BBE |  English |  Bible in Basic English |  
+|  DBY |  English |  Darby English Bible |  
+|  KJV |  English |  King James Version |  
+|  WBT |  English |  Websters Bible | 
+|  WEB |  English |  World English Bible | 
+|  YLT |  English |  Youngs Literal Translation | 
+|  IND |  indonesian |   |
+|  AFR |  Afrikaans |   | 
+|  BEN |  Bengali |  বাংলা |
+|  GUJ |  Gujarati |  ગુજરાતી |
+|  HIN |  Hindi |  हिन्दी |
+|  KAN |  Kannada |  ಕನ್ನಡ | 
+|  MAL |  Malayalam |  മലയാളം | 
+|  ORI |  Oriya |  ଓଡ଼ିଆ oḍiā |
+|  PUN |  Punjabi |  ਪੰਜਾਬੀ پنجابی |
+|  SEP |  Sepedi |   |
+|  TAM |  Tamil |  தமிழ்  |  
+|  TEL |  Telugu |  తెలుగు | 
+|  XHO |  Xhosa |   |  
+|  ZUL |  Zulu |   | 
+|  BYZ |  Greek Byzantine |  Ἑλληνική Ellinikí |   |
+|  TIS |  Greek |  Un-parsed Tischendorf |
+|  RV60 |  Español |  Biblia Reina Valera 1960 |  
+|  AA |  Português |  Almeida Revisada Imprensa Bíblica | 
+|  NVI |  Português |  Nova Versão Internacional  | 
+|  ACF |  Português |  Almeida Corrigida e Fiel |
+
+
 ## API ##
 
 El modelo Vista / Controlador esta totalmente separado a traves de un sistema de API. El archivo api.php sirve los datos en formato jSON.
