@@ -21,6 +21,8 @@ En la carpeta SQL estan los archivos para cargar en la Base de Datos. Luego modi
 
 In the SQL folder are the files to load the Database. Then modify the settings in api.php to connect with the DataBase.
 
+## Bible Versions And Languages ##
+
 | Abbreviation | Language | version |
 | ------------ | ------------ | ------------ |
 |  ENG |  English |   |
